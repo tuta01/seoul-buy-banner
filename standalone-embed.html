@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEOUL BUY Bách Hóa Banner - Minimalist Hero Standalone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Be Vietnam Pro', sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .seoul-banner-container {
+      max-width: 1140px;
+      margin: 0 auto;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .seoul-pure-banner {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      padding: 48px;
+      gap: 32px;
+      min-height: 460px;
+      overflow: hidden;
+    }
+
+    .banner-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .banner-main-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.12;
+      color: #0f172a;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+    .banner-main-title .accent-red {
+      color: #d6001c;
+    }
+
+    .banner-subtext {
+      font-size: clamp(0.92rem, 1.5vw, 1.05rem);
+      color: #475569;
+      margin-bottom: 24px;
+      max-width: 520px;
+    }
+
+    .mobile-products-row {
+      display: none;
+    }
+
+    .promo-chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .promo-chip {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 7px 12px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .promo-chip:hover {
+      background: #ffffff;
+      border-color: #0f172a;
+    }
+    .promo-chip .badge-val {
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .promo-chip .code-val {
+      font-family: monospace;
+      color: #475569;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .banner-cta-group {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .main-cta-btn {
+      background: #0f172a;
+      color: #ffffff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+    .main-cta-btn:hover {
+      background: #1e293b;
+      transform: translateY(-2px);
+    }
+
+    .banner-trust-specs {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 0.78rem;
+      color: #94a3b8;
+    }
+    .banner-trust-specs span {
+      color: #0f172a;
+      font-weight: 600;
+    }
+
+    .desktop-products-stage {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      min-height: 320px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stage-product-item {
+      position: absolute;
+      transition: all 0.3s ease;
+    }
+
+    .stage-product-item img {
+      max-width: 100%;
+      height: auto;
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.08));
+      transition: transform 0.4s ease;
+    }
+
+    .item-caramel { width: 155px; left: 2%; top: 15%; z-index: 2; transform: rotate(-6deg); }
+    .item-caramel:hover { transform: rotate(-2deg) scale(1.05); z-index: 10; }
+
+    .item-malang { width: 180px; left: 28%; top: 5%; z-index: 3; transform: rotate(2deg); }
+    .item-malang:hover { transform: rotate(0deg) scale(1.05); z-index: 10; }
+
+    .item-doritos { width: 190px; right: 0%; bottom: 5%; z-index: 1; transform: rotate(8deg); }
+    .item-doritos:hover { transform: rotate(3deg) scale(1.05); z-index: 10; }
+
+    .item-tag {
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      color: #0f172a;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      white-space: nowrap;
+      pointer-events: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+
+    @media (max-width: 900px) {
+      .seoul-pure-banner {
+        grid-template-columns: 1fr;
+        padding: 36px 28px;
+        gap: 28px;
+        text-align: center;
+      }
+      .banner-subtext { margin-left: auto; margin-right: auto; }
+      .promo-chips-row { justify-content: center; }
+      .banner-cta-group { justify-content: center; flex-direction: column; }
+      .desktop-products-stage { min-height: 260px; width: 100%; max-width: 480px; margin: 0 auto; }
+      .item-caramel { width: 130px; left: 5%; top: 10%; }
+      .item-malang { width: 150px; left: 33%; top: 0%; }
+      .item-doritos { width: 160px; right: 2%; bottom: 0%; }
+    }
+
+    @media (max-width: 650px) {
+      .seoul-pure-banner {
+        display: block !important;
+        padding: 24px 16px !important;
+        border-radius: 16px !important;
+        min-height: auto !important;
+        text-align: center !important;
+      }
+
+      .banner-copy {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+      }
+
+      .banner-main-title {
+        font-size: 1.75rem !important;
+        margin-bottom: 8px !important;
+      }
+
+      .banner-subtext {
+        font-size: 0.85rem !important;
+        margin-bottom: 16px !important;
+      }
+
+      .desktop-products-stage {
+        display: none !important;
+      }
+
+      .mobile-products-row {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: flex-end !important;
+        gap: 8px !important;
+        width: 100% !important;
+        margin: 4px 0 20px 0 !important;
+      }
+
+      .mobile-product-item {
+        flex: 1 !important;
+        max-width: 105px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+      }
+
+      .mobile-product-item img {
+        width: 100% !important;
+        height: 90px !important;
+        object-fit: contain !important;
+        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.08)) !important;
+      }
+
+      .mobile-tag {
+        margin-top: 4px !important;
+        background: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        color: #0f172a !important;
+        padding: 2px 6px !important;
+        border-radius: 10px !important;
+        font-size: 0.6rem !important;
+        font-weight: 700 !important;
+        white-space: nowrap !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.04) !important;
+      }
+
+      .promo-chips-row {
+        width: 100% !important;
+        flex-direction: column !important;
+        gap: 6px !important;
+        margin-bottom: 16px !important;
+      }
+
+      .promo-chip {
+        width: 100% !important;
+        justify-content: space-between !important;
+        padding: 8px 12px !important;
+      }
+
+      .banner-cta-group {
+        width: 100% !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+      }
+
+      .main-cta-btn {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 12px 16px !important;
+        font-size: 0.85rem !important;
+      }
+
+      .banner-trust-specs {
+        text-align: center !important;
+        font-size: 0.72rem !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="seoul-banner-container">
+    <article class="seoul-pure-banner">
+
+      <div class="banner-copy">
+        <h1 class="banner-main-title">SEOUL BUY <span class="accent-red">BÁCH HÓA</span></h1>
+        <p class="banner-subtext">
+          Bánh kẹo & snack Lotte chính hãng nhập khẩu Hàn Quốc. Tuyển chọn độc quyền từ những sản phẩm bán chạy nhất Coupang.
+        </p>
+
+        <div class="mobile-products-row">
+          <div class="mobile-product-item">
+            <img src="assets/images/caramel.jpg" alt="Kẹo Caramel Sữa Lotte">
+            <span class="mobile-tag">Milk Caramel</span>
+          </div>
+          <div class="mobile-product-item">
+            <img src="assets/images/malang-cow.jpg" alt="Kẹo Sữa Bông Malang Cow">
+            <span class="mobile-tag">Malang Cow</span>
+          </div>
+          <div class="mobile-product-item">
+            <img src="assets/images/doritos.png" alt="Snack Doritos Nacho Cheese">
+            <span class="mobile-tag">Doritos</span>
+          </div>
+        </div>
+
+        <div class="promo-chips-row">
+          <div class="promo-chip" onclick="alert('Đã sao chép: LOTTE-HOT15')">
+            <span class="badge-val">GIẢM 15%</span>
+            <span>SP Nổi Bật</span>
+            <span class="code-val">LOTTE-HOT15</span>
+          </div>
+
+          <div class="promo-chip" onclick="alert('Đã sao chép: LOTTE-COMBO3000')">
+            <span class="badge-val">3.000₩ OFF</span>
+            <span>Đơn từ 20.000₩</span>
+            <span class="code-val">LOTTE-COMBO3000</span>
+          </div>
+
+          <div class="promo-chip" onclick="alert('Đã sao chép: LOTTE-FREESHIP')">
+            <span class="badge-val">FREE SHIP</span>
+            <span>Đơn từ 30.000₩</span>
+            <span class="code-val">LOTTE-FREESHIP</span>
+          </div>
+        </div>
+
+        <div class="banner-cta-group">
+          <button class="main-cta-btn" onclick="alert('Chuyển hướng đến cửa hàng SEOUL BUY!')">
+            <span>KHÁM PHÁ COUPANG BESTSELLERS</span>
+            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+          </button>
+          
+          <div class="banner-trust-specs">
+            <div><span>100% Nội Địa Lotte</span> • Giao Hàng 24/7</div>
+            <div>Nhập khẩu trực tiếp từ Hàn Quốc</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="desktop-products-stage">
+        <div class="stage-product-item item-caramel">
+          <img src="assets/images/caramel.jpg" alt="Kẹo Caramel Sữa Lotte">
+          <div class="item-tag">Milk Caramel • No.1</div>
+        </div>
+
+        <div class="stage-product-item item-malang">
+          <img src="assets/images/malang-cow.jpg" alt="Kẹo Sữa Bông Malang Cow">
+          <div class="item-tag">Malang Cow • Soft Candy</div>
+        </div>
+
+        <div class="stage-product-item item-doritos">
+          <img src="assets/images/doritos.png" alt="Snack Doritos Nacho Cheese">
+          <div class="item-tag">Doritos • Nacho Cheese</div>
+        </div>
+      </div>
+
+    </article>
+  </div>
+
+  <script>
+    if (window.lucide) lucide.createIcons();
+  </script>
+</body>
+</html>
