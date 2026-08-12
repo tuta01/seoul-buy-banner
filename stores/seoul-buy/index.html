@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEOUL BUY Bách Hóa - Minimalist Hero Banner Studio</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Studio Control Toolbar -->
+    <header class="studio-header">
+      <div class="studio-title">
+        <i data-lucide="layout" style="color: #0f172a;"></i>
+        <span>SEOUL BUY BANNER STUDIO</span>
+        <span>Minimalist Edition</span>
+      </div>
+
+      <div class="device-switcher">
+        <button class="device-btn" data-mode="fluid" onclick="setDeviceMode('fluid')">
+          <i data-lucide="maximize-2"></i> Fluid
+        </button>
+        <button class="device-btn active" data-mode="desktop" onclick="setDeviceMode('desktop')">
+          <i data-lucide="monitor"></i> Desktop
+        </button>
+        <button class="device-btn" data-mode="tablet" onclick="setDeviceMode('tablet')">
+          <i data-lucide="tablet"></i> Tablet
+        </button>
+        <button class="device-btn" data-mode="mobile" onclick="setDeviceMode('mobile')">
+          <i data-lucide="smartphone"></i> Mobile
+        </button>
+      </div>
+
+      <div class="action-btns">
+        <button class="btn btn-outline" onclick="openExportModal()">
+          <i data-lucide="code"></i> Lấy Mã HTML
+        </button>
+        <button class="btn btn-primary" onclick="copyBannerHTML()">
+          <i data-lucide="copy"></i> Sao chép Banner
+        </button>
+      </div>
+    </header>
+
+    <!-- Preview Frame -->
+    <main class="banner-frame-container">
+      <div id="bannerFrame" class="banner-frame mode-desktop">
+        
+        <!-- START: MINIMALIST HERO BANNER -->
+        <article class="seoul-pure-banner" id="seoulBuyBanner">
+
+          <!-- Left Copy Area -->
+          <div class="banner-copy">
+            <h1 class="banner-main-title">
+              SEOUL BUY <span class="accent-red">BÁCH HÓA</span>
+            </h1>
+            
+            <p class="banner-subtext">
+              Bánh kẹo & snack Lotte chính hãng nhập khẩu Hàn Quốc. Tuyển chọn độc quyền từ những sản phẩm bán chạy nhất Coupang.
+            </p>
+
+            <!-- Dedicated Mobile Product Row (Clean Flex Row on Mobile) -->
+            <div class="mobile-products-row">
+              <div class="mobile-product-item">
+                <img src="assets/images/caramel.jpg" alt="Kẹo Caramel Sữa Lotte">
+                <span class="mobile-tag">Milk Caramel</span>
+              </div>
+              <div class="mobile-product-item">
+                <img src="assets/images/malang-cow.jpg" alt="Kẹo Sữa Bông Malang Cow">
+                <span class="mobile-tag">Malang Cow</span>
+              </div>
+              <div class="mobile-product-item">
+                <img src="assets/images/doritos.png" alt="Snack Doritos Nacho Cheese">
+                <span class="mobile-tag">Doritos</span>
+              </div>
+            </div>
+
+            <!-- Member Benefit Promo Chips -->
+            <div class="promo-chips-row">
+              <div class="promo-chip" onclick="copyCode('LOTTE-HOT15')">
+                <span class="badge-val">GIẢM 15%</span>
+                <span>SP Nổi Bật</span>
+                <span class="code-val">LOTTE-HOT15</span>
+              </div>
+
+              <div class="promo-chip" onclick="copyCode('LOTTE-COMBO3000')">
+                <span class="badge-val">3.000₩ OFF</span>
+                <span>Đơn từ 20.000₩</span>
+                <span class="code-val">LOTTE-COMBO3000</span>
+              </div>
+
+              <div class="promo-chip" onclick="copyCode('LOTTE-FREESHIP')">
+                <span class="badge-val">FREE SHIP</span>
+                <span>Đơn từ 30.000₩</span>
+                <span class="code-val">LOTTE-FREESHIP</span>
+              </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="banner-cta-group">
+              <button class="main-cta-btn" onclick="showToast('Đã chuyển hướng đến cửa hàng SEOUL BUY!')">
+                <span>KHÁM PHÁ COUPANG BESTSELLERS</span>
+                <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+              </button>
+              
+              <div class="banner-trust-specs">
+                <div><span>100% Nội Địa Lotte</span> • Giao Hàng 24/7</div>
+                <div>Nhập khẩu trực tiếp từ Hàn Quốc</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Desktop Product Stage (Hidden on Mobile) -->
+          <div class="desktop-products-stage">
+
+            <div class="stage-product-item item-caramel">
+              <img src="assets/images/caramel.jpg" alt="Kẹo Caramel Sữa Lotte">
+              <div class="item-tag">Milk Caramel • No.1</div>
+            </div>
+
+            <div class="stage-product-item item-malang">
+              <img src="assets/images/malang-cow.jpg" alt="Kẹo Sữa Bông Malang Cow">
+              <div class="item-tag">Malang Cow • Soft Candy</div>
+            </div>
+
+            <div class="stage-product-item item-doritos">
+              <img src="assets/images/doritos.png" alt="Snack Doritos Nacho Cheese">
+              <div class="item-tag">Doritos • Nacho Cheese</div>
+            </div>
+          </div>
+
+        </article>
+        <!-- END BANNER -->
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast-msg">
+    <i data-lucide="check-circle" style="color: #22c55e;"></i>
+    <span id="toastText">Đã sao chép mã ưu đãi!</span>
+  </div>
+
+  <!-- Modal -->
+  <div id="exportModal" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Mã HTML/CSS Banner (Minimalist Style)</h3>
+        <button class="modal-close" onclick="closeExportModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <textarea id="codeTextArea" readonly></textarea>
+      </div>
+      <div style="padding: 14px 20px; background: #f8fafc; border-top: 1px solid #e2e8f0; text-align: right;">
+        <button class="btn btn-outline" onclick="closeExportModal()">Đóng</button>
+        <button class="btn btn-primary" onclick="copyModalCode()">Sao Chép Mã HTML</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

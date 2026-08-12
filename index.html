@@ -3,166 +3,254 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SEOUL BUY Bách Hóa - Minimalist Hero Banner Studio</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>STORE BANNER HUB - Quản Lý Banner Đa Cửa Hàng</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f1f5f9;
+      color: #475569;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .header-title {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+
+    .header-desc {
+      font-size: 1.05rem;
+      color: #64748b;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .stores-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .store-card {
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+
+    .store-card:hover {
+      transform: translateY(-4px);
+      border-color: #0f172a;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .store-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+    }
+
+    .badge-active {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .badge-template {
+      background: #f1f5f9;
+      color: #64748b;
+    }
+
+    .store-name {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .store-info {
+      font-size: 0.88rem;
+      color: #64748b;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .store-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .meta-tag {
+      font-size: 0.72rem;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 3px 8px;
+      border-radius: 6px;
+      color: #475569;
+      font-weight: 600;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .action-btn {
+      flex: 1;
+      text-decoration: none;
+      text-align: center;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-dark {
+      background: #0f172a;
+      color: #ffffff;
+    }
+    .btn-dark:hover {
+      background: #1e293b;
+    }
+
+    .btn-light {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      color: #0f172a;
+    }
+    .btn-light:hover {
+      background: #ffffff;
+      border-color: #cbd5e1;
+    }
+  </style>
 </head>
 <body>
 
   <div class="container">
     
-    <!-- Studio Control Toolbar -->
-    <header class="studio-header">
-      <div class="studio-title">
-        <i data-lucide="layout" style="color: #0f172a;"></i>
-        <span>SEOUL BUY BANNER STUDIO</span>
-        <span>Minimalist Edition</span>
+    <header class="header">
+      <div class="header-badge">
+        <i data-lucide="layers" style="width: 14px; height: 14px;"></i>
+        MULTI-STORE BANNER SYSTEM
       </div>
-
-      <div class="device-switcher">
-        <button class="device-btn" data-mode="fluid" onclick="setDeviceMode('fluid')">
-          <i data-lucide="maximize-2"></i> Fluid
-        </button>
-        <button class="device-btn active" data-mode="desktop" onclick="setDeviceMode('desktop')">
-          <i data-lucide="monitor"></i> Desktop
-        </button>
-        <button class="device-btn" data-mode="tablet" onclick="setDeviceMode('tablet')">
-          <i data-lucide="tablet"></i> Tablet
-        </button>
-        <button class="device-btn" data-mode="mobile" onclick="setDeviceMode('mobile')">
-          <i data-lucide="smartphone"></i> Mobile
-        </button>
-      </div>
-
-      <div class="action-btns">
-        <button class="btn btn-outline" onclick="openExportModal()">
-          <i data-lucide="code"></i> Lấy Mã HTML
-        </button>
-        <button class="btn btn-primary" onclick="copyBannerHTML()">
-          <i data-lucide="copy"></i> Sao chép Banner
-        </button>
-      </div>
+      <h1 class="header-title">Store Banner Hub</h1>
+      <p class="header-desc">
+        Hệ thống lưu trữ & quản lý Banner HTML5 Responsive dành cho danh sách các cửa hàng.
+      </p>
     </header>
 
-    <!-- Preview Frame -->
-    <main class="banner-frame-container">
-      <div id="bannerFrame" class="banner-frame mode-desktop">
-        
-        <!-- START: MINIMALIST HERO BANNER -->
-        <article class="seoul-pure-banner" id="seoulBuyBanner">
-
-          <!-- Left Copy Area -->
-          <div class="banner-copy">
-            <h1 class="banner-main-title">
-              SEOUL BUY <span class="accent-red">BÁCH HÓA</span>
-            </h1>
-            
-            <p class="banner-subtext">
-              Bánh kẹo & snack Lotte chính hãng nhập khẩu Hàn Quốc. Tuyển chọn độc quyền từ những sản phẩm bán chạy nhất Coupang.
-            </p>
-
-            <!-- Dedicated Mobile Product Row (Clean Flex Row on Mobile) -->
-            <div class="mobile-products-row">
-              <div class="mobile-product-item">
-                <img src="assets/images/caramel.jpg" alt="Kẹo Caramel Sữa Lotte">
-                <span class="mobile-tag">Milk Caramel</span>
-              </div>
-              <div class="mobile-product-item">
-                <img src="assets/images/malang-cow.jpg" alt="Kẹo Sữa Bông Malang Cow">
-                <span class="mobile-tag">Malang Cow</span>
-              </div>
-              <div class="mobile-product-item">
-                <img src="assets/images/doritos.png" alt="Snack Doritos Nacho Cheese">
-                <span class="mobile-tag">Doritos</span>
-              </div>
-            </div>
-
-            <!-- Member Benefit Promo Chips -->
-            <div class="promo-chips-row">
-              <div class="promo-chip" onclick="copyCode('LOTTE-HOT15')">
-                <span class="badge-val">GIẢM 15%</span>
-                <span>SP Nổi Bật</span>
-                <span class="code-val">LOTTE-HOT15</span>
-              </div>
-
-              <div class="promo-chip" onclick="copyCode('LOTTE-COMBO3000')">
-                <span class="badge-val">3.000₩ OFF</span>
-                <span>Đơn từ 20.000₩</span>
-                <span class="code-val">LOTTE-COMBO3000</span>
-              </div>
-
-              <div class="promo-chip" onclick="copyCode('LOTTE-FREESHIP')">
-                <span class="badge-val">FREE SHIP</span>
-                <span>Đơn từ 30.000₩</span>
-                <span class="code-val">LOTTE-FREESHIP</span>
-              </div>
-            </div>
-
-            <!-- Call to Action -->
-            <div class="banner-cta-group">
-              <button class="main-cta-btn" onclick="showToast('Đã chuyển hướng đến cửa hàng SEOUL BUY!')">
-                <span>KHÁM PHÁ COUPANG BESTSELLERS</span>
-                <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
-              </button>
-              
-              <div class="banner-trust-specs">
-                <div><span>100% Nội Địa Lotte</span> • Giao Hàng 24/7</div>
-                <div>Nhập khẩu trực tiếp từ Hàn Quốc</div>
-              </div>
-            </div>
+    <main class="stores-grid">
+      
+      <!-- Store 1: SEOUL BUY Bách Hóa -->
+      <article class="store-card">
+        <div>
+          <span class="store-badge badge-active">
+            <i data-lucide="check-circle" style="width: 12px; height: 12px;"></i> SẴN SÀNG
+          </span>
+          <h2 class="store-name">SEOUL BUY Bách Hóa</h2>
+          <p class="store-info">
+            Banner Hero Minimalist K-Snack giới thiệu 3 sản phẩm Lotte nổi bật (Kẹo Caramel, Malang Cow, Doritos) kèm mã giảm giá 1-click.
+          </p>
+          <div class="store-meta">
+            <span class="meta-tag">Minimalist</span>
+            <span class="meta-tag">Responsive</span>
+            <span class="meta-tag">1-Click Coupon</span>
           </div>
+        </div>
 
-          <!-- Desktop Product Stage (Hidden on Mobile) -->
-          <div class="desktop-products-stage">
+        <div class="card-actions">
+          <a href="stores/seoul-buy/index.html" class="action-btn btn-dark">
+            <span>Xem Studio</span>
+            <i data-lucide="external-link" style="width: 14px; height: 14px;"></i>
+          </a>
+          <a href="stores/seoul-buy/standalone-embed.html" class="action-btn btn-light">
+            <span>Mã Nhúng</span>
+            <i data-lucide="code" style="width: 14px; height: 14px;"></i>
+          </a>
+        </div>
+      </article>
 
-            <div class="stage-product-item item-caramel">
-              <img src="assets/images/caramel.jpg" alt="Kẹo Caramel Sữa Lotte">
-              <div class="item-tag">Milk Caramel • No.1</div>
-            </div>
-
-            <div class="stage-product-item item-malang">
-              <img src="assets/images/malang-cow.jpg" alt="Kẹo Sữa Bông Malang Cow">
-              <div class="item-tag">Malang Cow • Soft Candy</div>
-            </div>
-
-            <div class="stage-product-item item-doritos">
-              <img src="assets/images/doritos.png" alt="Snack Doritos Nacho Cheese">
-              <div class="item-tag">Doritos • Nacho Cheese</div>
-            </div>
+      <!-- Store 2 Template Placeholder: Cửa hàng tiếp theo -->
+      <article class="store-card" style="border-style: dashed; background: #fafafa;">
+        <div>
+          <span class="store-badge badge-template">
+            <i data-lucide="plus" style="width: 12px; height: 12px;"></i> KHUNG SẴN SÀNG
+          </span>
+          <h2 class="store-name">Cửa Hàng Tiếp Theo</h2>
+          <p class="store-info">
+            Tạo thêm thư mục cửa hàng mới dễ dàng trong <code>stores/&lt;ten-cua-hang&gt;/</code> không giới hạn.
+          </p>
+          <div class="store-meta">
+            <span class="meta-tag">Template Ready</span>
           </div>
+        </div>
 
-        </article>
-        <!-- END BANNER -->
+        <div class="card-actions">
+          <button class="action-btn btn-light" style="cursor: default; opacity: 0.7;">
+            <span>Thêm vào stores/</span>
+          </button>
+        </div>
+      </article>
 
-      </div>
     </main>
 
   </div>
 
-  <!-- Toast -->
-  <div id="toast" class="toast-msg">
-    <i data-lucide="check-circle" style="color: #22c55e;"></i>
-    <span id="toastText">Đã sao chép mã ưu đãi!</span>
-  </div>
-
-  <!-- Modal -->
-  <div id="exportModal" class="modal-backdrop">
-    <div class="modal-box">
-      <div class="modal-header">
-        <h3>Mã HTML/CSS Banner (Minimalist Style)</h3>
-        <button class="modal-close" onclick="closeExportModal()">&times;</button>
-      </div>
-      <div class="modal-body">
-        <textarea id="codeTextArea" readonly></textarea>
-      </div>
-      <div style="padding: 14px 20px; background: #f8fafc; border-top: 1px solid #e2e8f0; text-align: right;">
-        <button class="btn btn-outline" onclick="closeExportModal()">Đóng</button>
-        <button class="btn btn-primary" onclick="copyModalCode()">Sao Chép Mã HTML</button>
-      </div>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
   <script>
     lucide.createIcons();
   </script>
